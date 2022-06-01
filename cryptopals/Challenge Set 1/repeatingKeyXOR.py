@@ -5,9 +5,10 @@ import math
 def repeatingKeyXOR(message, key):
     # bytes((a ^ c) for a in codecs.decode(h, 'hex')))
     encr = b''
-    for i, a in enumerate(message):
-       encr +=  bytes(x ^ y for x, y in (codecs.encode(bytes(a, encoding='utf-8'), 'hex'), codecs.encode(bytes(key[i % len(key)], encoding='utf-8'), 'hex'))) 
-    print(encr.decode())
+    messageHex = str.encode(message)
+    for i, a in enumerate(messageHex):
+        encr += (a ^ int.from_bytes(str.encode(key[i % len(key)]), "big")).to_bytes(1,byteorder='big')
+    print(encr)
 
 def main():
     print(repeatingKeyXOR("Burning 'em, if you ain't quick and nimble\nI go crazy when I hear a cymbal", "ICE"))

@@ -46,7 +46,7 @@ def solveFile(fileName):
             out = ret[0]
             char = ret[1]
             maxScore = ret[2]
-
+    fPoint.close()
     return out, char
 
 def main():
