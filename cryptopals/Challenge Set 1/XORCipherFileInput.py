@@ -49,8 +49,6 @@ def solveFile(fileName):
 
     return out, char
 
-
-
 def main():
     if len(sys.argv) == 2:
         h = sys.argv[1]
