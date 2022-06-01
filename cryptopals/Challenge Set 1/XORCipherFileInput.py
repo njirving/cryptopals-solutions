@@ -31,14 +31,32 @@ def cipherSolve(h):
                 char = chr(i)
         except:
             pass
+    return out, char, maxScore
+
+def solveFile(fileName):
+    fPoint = open(fileName, "r")
+    line = None
+    out = ""
+    char = ''
+    maxScore = 0
+    while line != '':
+        line = fPoint.readline().split('\n')[0]
+        ret = cipherSolve(line)
+        if ret[2] > maxScore:
+            out = ret[0]
+            char = ret[1]
+            maxScore = ret[2]
+
     return out, char
+
+
 
 def main():
     if len(sys.argv) == 2:
         h = sys.argv[1]
-        print(cipherSolve(h))
+        print(solveFile(h))
     else:
-        print("Usage: singleByteXORCipher.py [hex cipher]")
+        print("Usage: singleByteXORCipher.py [file path]")
 
 if __name__ == "__main__":
     main()
